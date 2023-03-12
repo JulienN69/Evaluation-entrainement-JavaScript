@@ -40,13 +40,14 @@ svg {
 }
 
 .dice {
-    min-height: 100px;
-    max-width: 100px;
+    min-height: 130px;
+    max-width: 130px;
     margin: 0 auto;
     background-color: white;
 }
 
-.player {
+.playerOne,
+.playerTwo {
     text-transform: uppercase;
     font-size: 4rem;
     font-weight: 300;

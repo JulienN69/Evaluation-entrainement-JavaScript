@@ -27,7 +27,9 @@
             <div class="container game">
                 <!----------------- bouton new game ----------------->
 
-                <button class="btn button d-flex align-items-center">
+                <button
+                    class="btn button buttonNewGame d-flex align-items-center"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -51,14 +53,22 @@
                 <div
                     class="container d-flex justify-content-around text-center"
                 >
-                    <div class="player col col-md-4">
+                    <div class="playerOne col col-md-4">
                         <p>player 1</p>
-                        <div class="score"><p>43</p></div>
+                        <div class="score">
+                            <p class="scorePlayerOne">43</p>
+                        </div>
                     </div>
-                    <div class="dice col col-12 col-md-4 align-self-end"></div>
-                    <div class="player col col-12 col-md-4">
-                        <p>player 1</p>
-                        <div class="score"><p>43</p></div>
+                    <div
+                        class="dice col col-4 align-self-end d-flex justify-content-center align-items-center"
+                    >
+                        <p>1</p>
+                    </div>
+                    <div class="playerTwo col col-md-4">
+                        <p>player 2</p>
+                        <div class="score">
+                            <p class="scorePlayerTwo">43</p>
+                        </div>
                     </div>
                 </div>
 
@@ -69,7 +79,7 @@
                 >
                     <div class="current col col-md-4">
                         <p>Current</p>
-                        <div class="currentNumber"><p>11</p></div>
+                        <div><p class="currentNumber">11</p></div>
                     </div>
                     <div class="current_button">
                         <button
@@ -118,7 +128,7 @@
                     </div>
                     <div class="current col col-md-4">
                         <p>Current</p>
-                        <div class="currentNumber"><p>11</p></div>
+                        <div><p class="currentNumber">11</p></div>
                     </div>
                 </div>
             </div>
