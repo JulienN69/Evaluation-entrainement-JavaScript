@@ -26,3 +26,14 @@ const startGame = () => {
 };
 
 newGame.addEventListener("click", startGame);
+
+// fonction de lancement du dé
+
+const dice = document.querySelector("img");
+const buttonRollDice = document.querySelector(".buttonRollDice");
+
+buttonRollDice.addEventListener("click", () => {
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    const randomDice = "images/dice-" + randomNumber + ".jpg";
+    dice.setAttribute("src", randomDice);
+});
