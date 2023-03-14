@@ -51,6 +51,11 @@ svg {
 .playerTwo {
     text-transform: uppercase;
     font-size: 4rem;
+    font-weight: 200;
+}
+
+.scorePlayerOne,
+.scorePlayerTwo {
     font-weight: 300;
 }
 
@@ -71,4 +76,8 @@ svg {
 
 .currentNumber {
     color: white;
+}
+
+.active {
+    font-weight: 400;
 }
