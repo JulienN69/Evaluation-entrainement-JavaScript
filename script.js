@@ -1,25 +1,19 @@
-// Au clique sur New Game, on réinitialise tous les scores à zéro,
-// le joueur actif est player 1.
-//
-// Au clique sur Roll Dice, le dé change aléatoirement et
-// sa valeur s'ajoute à la current du joueur actif. Si un 1 sort la current
-// revient à zéro et on change de joueur actif.
-// Si le joueur actif clique sur Hold, la current s'ajoute à ses points,
-// repasse à zéro, et on change de joueur actif.
-//
-//
-//
-
 // Déclaration des variables
-
+// Les boutons
 const newGame = document.querySelector(".buttonNewGame");
+const buttonRollDice = document.querySelector(".buttonRollDice");
+const buttonHold = document.querySelector(".buttonHold");
+// Les scores
 const scorePlayerOne = document.querySelector(".scorePlayerOne");
 const scorePlayerTwo = document.querySelector(".scorePlayerTwo");
 const currentNumbers = document.querySelectorAll(".currentNumber");
-const playerOne = document.getElementById("playerOne");
-const playerTwo = document.getElementById("playerTwo");
 const currentNumberOne = document.getElementById("currentNumberOne");
 const currentNumberTwo = document.getElementById("currentNumberTwo");
+// Les joueurs
+const playerOne = document.getElementById("playerOne");
+const playerTwo = document.getElementById("playerTwo");
+// Le dé
+const dice = document.querySelector("img");
 
 // fonction pour débuter une nouvelle partie
 
@@ -32,11 +26,9 @@ const startGame = () => {
 
 newGame.addEventListener("click", startGame);
 
-// fonction de lancement du dé
+// lancement du dé
 
 let currentNumberTotal = 0;
-const dice = document.querySelector("img");
-const buttonRollDice = document.querySelector(".buttonRollDice");
 
 buttonRollDice.addEventListener("click", () => {
     const randomNumber = Math.floor(Math.random() * 6) + 1;
@@ -53,14 +45,36 @@ buttonRollDice.addEventListener("click", () => {
     }
 });
 
-// ajout de la valeur du dé à la current du joueur actif
+// fonction de changement du joueur actif
 
 const changePlayerActive = () => {
     if (playerOne.classList.contains("active")) {
         playerOne.classList.remove("active");
         playerTwo.classList.add("active");
+        currentNumberOne.innerText = 0;
+        currentNumberTotal = 0;
     } else {
         playerOne.classList.add("active");
         playerTwo.classList.remove("active");
+        currentNumberTwo.innerText = 0;
+        currentNumberTotal = 0;
     }
 };
+
+// Click du bouton Hold
+
+buttonHold.addEventListener("click", () => {
+    if (playerOne.classList.contains("active")) {
+        let number = parseInt(scorePlayerOne.innerText, 10);
+        number += parseInt(currentNumberOne.innerText, 10);
+        scorePlayerOne.innerText = number;
+        currentNumberOne.innerText = 0;
+        changePlayerActive();
+    } else {
+        let number = parseInt(scorePlayerTwo.innerText, 10);
+        number += parseInt(currentNumberTwo.innerText, 10);
+        scorePlayerTwo.innerText = number;
+        currentNumberTwo.innerText = 0;
+        changePlayerActive();
+    }
+});
