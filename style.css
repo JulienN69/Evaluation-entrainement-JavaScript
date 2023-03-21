@@ -1,83 +1,103 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
 }
 
 main {
-    background-color: #a79168;
-    overflow: hidden;
-    height: 100vh;
+  background-color: #a79168;
+  overflow: hidden;
+  height: 100vh;
 }
 
 svg {
-    color: #ea4d4d;
+  color: #ea4d4d;
 }
 
 .game {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background: linear-gradient(to right, #e8e7e7 50%, #faf9f8 50%);
-    max-width: 1400px;
-    margin: 2rem auto;
-    box-shadow: 5px 5px 10px #63543a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: linear-gradient(to right, #e8e7e7 50%, #faf9f8 50%);
+  max-width: 1400px;
+  margin: 2rem auto;
+  box-shadow: 5px 5px 10px #63543a;
 }
 
 .button {
-    display: block;
-    margin: 1rem auto;
-    padding: 1rem;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    font-size: 2rem;
-    font-weight: 300;
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 2rem;
+  font-weight: 300;
 }
 
 .button:hover {
-    color: #ea4d4d;
+  color: #ea4d4d;
 }
 
 .dice {
-    min-height: 130px;
-    max-width: 130px;
-    margin: 0 auto;
-    background-color: white;
+  min-height: 130px;
+  max-width: 130px;
+  margin: 0 auto;
+  background-color: white;
 }
 
 .playerOne,
 .playerTwo {
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 200;
+  text-transform: uppercase;
+  font-size: 4rem;
+  font-weight: 200;
 }
 
 .scorePlayerOne,
 .scorePlayerTwo {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .score {
-    color: #ea4d4d;
-    font-size: 6rem;
+  color: hsl(0, 79%, 61%);
+  font-size: 6rem;
 }
 
 .current {
-    background-color: #ea4d4d;
-    text-transform: uppercase;
-    font-size: 2rem;
-    font-weight: 300;
-    width: auto;
-    height: 10rem;
-    padding: 1.5rem;
+  background-color: #ea4d4d;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 300;
+  width: auto;
+  height: 10rem;
+  padding: 1.5rem;
 }
 
 .currentNumber {
-    color: white;
+  color: white;
 }
 
 .active {
-    font-weight: 400;
+  font-weight: 400;
+}
+
+.container-victory {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  right: 40%;
+  top: 50px;
+  width: 500px;
+  height: 200px;
+  border: 5px solid #ea4d4d;
+  background-color: white;
+}
+
+.container-victory p {
+  font-size: 3rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1rem;
+  color: #ea4d4d;
 }

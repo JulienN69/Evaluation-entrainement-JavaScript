@@ -14,14 +14,16 @@ const playerOne = document.getElementById("playerOne");
 const playerTwo = document.getElementById("playerTwo");
 // Le dé
 const dice = document.querySelector("img");
+// Le container de victoire
+const containerVictory = document.getElementById("container-victory");
 
 // fonction pour débuter une nouvelle partie
 
 const startGame = () => {
-    scorePlayerOne.innerText = 0;
-    scorePlayerTwo.innerText = 0;
-    currentNumbers.forEach((element) => (element.innerText = 0));
-    playerOne.classList.add("active");
+  scorePlayerOne.innerText = 0;
+  scorePlayerTwo.innerText = 0;
+  currentNumbers.forEach((element) => (element.innerText = 0));
+  playerOne.classList.add("active");
 };
 
 newGame.addEventListener("click", startGame);
@@ -31,50 +33,65 @@ newGame.addEventListener("click", startGame);
 let currentNumberTotal = 0;
 
 buttonRollDice.addEventListener("click", () => {
-    const randomNumber = Math.floor(Math.random() * 6) + 1;
-    const randomDice = "images/dice-" + randomNumber + ".jpg";
-    dice.setAttribute("src", randomDice);
-    if (playerOne.classList.contains("active") && randomNumber != 1) {
-        currentNumberTotal += randomNumber;
-        currentNumberOne.innerText = currentNumberTotal;
-    } else if (playerTwo.classList.contains("active") && randomNumber != 1) {
-        currentNumberTotal += randomNumber;
-        currentNumberTwo.innerText = currentNumberTotal;
-    } else {
-        changePlayerActive();
-    }
+  const randomNumber = Math.floor(Math.random() * 6) + 1;
+  const randomDice = "images/dice-" + randomNumber + ".jpg";
+  dice.setAttribute("src", randomDice);
+  if (playerOne.classList.contains("active") && randomNumber != 1) {
+    currentNumberTotal += randomNumber;
+    currentNumberOne.innerText = currentNumberTotal;
+  } else if (playerTwo.classList.contains("active") && randomNumber != 1) {
+    currentNumberTotal += randomNumber;
+    currentNumberTwo.innerText = currentNumberTotal;
+  } else {
+    changePlayerActive();
+  }
 });
 
 // fonction de changement du joueur actif
 
 const changePlayerActive = () => {
-    if (playerOne.classList.contains("active")) {
-        playerOne.classList.remove("active");
-        playerTwo.classList.add("active");
-        currentNumberOne.innerText = 0;
-        currentNumberTotal = 0;
-    } else {
-        playerOne.classList.add("active");
-        playerTwo.classList.remove("active");
-        currentNumberTwo.innerText = 0;
-        currentNumberTotal = 0;
-    }
+  if (playerOne.classList.contains("active")) {
+    playerOne.classList.remove("active");
+    playerTwo.classList.add("active");
+    currentNumberOne.innerText = 0;
+    currentNumberTotal = 0;
+  } else {
+    playerOne.classList.add("active");
+    playerTwo.classList.remove("active");
+    currentNumberTwo.innerText = 0;
+    currentNumberTotal = 0;
+  }
 };
 
 // Click du bouton Hold
 
 buttonHold.addEventListener("click", () => {
-    if (playerOne.classList.contains("active")) {
-        let number = parseInt(scorePlayerOne.innerText, 10);
-        number += parseInt(currentNumberOne.innerText, 10);
-        scorePlayerOne.innerText = number;
-        currentNumberOne.innerText = 0;
-        changePlayerActive();
-    } else {
-        let number = parseInt(scorePlayerTwo.innerText, 10);
-        number += parseInt(currentNumberTwo.innerText, 10);
-        scorePlayerTwo.innerText = number;
-        currentNumberTwo.innerText = 0;
-        changePlayerActive();
+  if (playerOne.classList.contains("active")) {
+    let number = parseInt(scorePlayerOne.innerText, 10);
+    number += parseInt(currentNumberOne.innerText, 10);
+    scorePlayerOne.innerText = number;
+    if (number > 10) {
+      victory(1);
     }
+    currentNumberOne.innerText = 0;
+    changePlayerActive();
+  } else {
+    let number = parseInt(scorePlayerTwo.innerText, 10);
+    number += parseInt(currentNumberTwo.innerText, 10);
+    scorePlayerTwo.innerText = number;
+    if (number > 10) {
+      victory(2);
+    }
+    currentNumberTwo.innerText = 0;
+    changePlayerActive();
+  }
 });
+
+// fonction d'affichage de la victoire
+
+function victory(nb) {
+  containerVictory.style.display = "block";
+  let x = containerVictory.firstElementChild;
+  console.log(x);
+  x.innerText = "Player " + nb + " wins !!";
+}
