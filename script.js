@@ -3,6 +3,7 @@
 const newGame = document.querySelector(".buttonNewGame");
 const buttonRollDice = document.querySelector(".buttonRollDice");
 const buttonHold = document.querySelector(".buttonHold");
+const buttonPlayAgain = document.getElementById("buttonPlayAgain");
 // Les scores
 const scorePlayerOne = document.querySelector(".scorePlayerOne");
 const scorePlayerTwo = document.querySelector(".scorePlayerTwo");
@@ -16,6 +17,8 @@ const playerTwo = document.getElementById("playerTwo");
 const dice = document.querySelector("img");
 // Le container de victoire
 const containerVictory = document.getElementById("container-victory");
+//le container global
+const main = document.querySelector("main");
 
 // fonction pour débuter une nouvelle partie
 
@@ -24,6 +27,7 @@ const startGame = () => {
   scorePlayerTwo.innerText = 0;
   currentNumbers.forEach((element) => (element.innerText = 0));
   playerOne.classList.add("active");
+  playerTwo.classList.remove("active");
 };
 
 newGame.addEventListener("click", startGame);
@@ -90,8 +94,14 @@ buttonHold.addEventListener("click", () => {
 // fonction d'affichage de la victoire
 
 function victory(nb) {
+  containerVictory.classList.add("div-animate");
   containerVictory.style.display = "block";
-  let x = containerVictory.firstElementChild;
-  console.log(x);
-  x.innerText = "Player " + nb + " wins !!";
+  let containerVictoryChild = containerVictory.firstElementChild;
+  containerVictoryChild.innerText = "Player " + nb + " wins !!";
 }
+
+// click du bouton play again
+buttonPlayAgain.addEventListener("click", () => {
+  containerVictory.style.display = "none";
+  startGame();
+});
