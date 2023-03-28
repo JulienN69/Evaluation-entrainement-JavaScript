@@ -74,7 +74,7 @@ buttonHold.addEventListener("click", () => {
     let number = parseInt(scorePlayerOne.innerText, 10);
     number += parseInt(currentNumberOne.innerText, 10);
     scorePlayerOne.innerText = number;
-    if (number > 10) {
+    if (number >= 100) {
       victory(1);
     }
     currentNumberOne.innerText = 0;
@@ -83,7 +83,7 @@ buttonHold.addEventListener("click", () => {
     let number = parseInt(scorePlayerTwo.innerText, 10);
     number += parseInt(currentNumberTwo.innerText, 10);
     scorePlayerTwo.innerText = number;
-    if (number > 10) {
+    if (number >= 100) {
       victory(2);
     }
     currentNumberTwo.innerText = 0;
